@@ -2,8 +2,8 @@ enum APP_ENVIRONMENTS { production, development }
 
 class AppEnvironment {
   // !!!IMPORTANT!!!
-  static const environment = APP_ENVIRONMENTS.production;
-  static const USE_FAKE_API_IMPLEMENTATION = false;
+  static const environment = APP_ENVIRONMENTS.development;
+  static const USE_FAKE_API_IMPLEMENTATION = true;
 
   //////////////////////////////////////////////////////////////////////////
 
@@ -23,15 +23,9 @@ class AppEnvironment {
 
   //////////////////////////////////////////////////////////////////////////
 
-  // SQLite database
-  static const databaseName = 'coupon.sqlite';
-  static const databaseVersion = 1;
-
-  //////////////////////////////////////////////////////////////////////////
-
   // API / backend base urls
-  static const productionApiBaseUrl = 'https://coupon.romic.de/';
-  static const developmentApiBaseUrl = '';
+  static const productionApiBaseUrl = '';
+  static const developmentApiBaseUrl = 'https://bebasket.digitalwebtunisia.com/';
 
   // API base url based on current environment
   static String get apiBaseUrl => AppEnvironment.isProductionMode

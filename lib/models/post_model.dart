@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:html_unescape/html_unescape.dart';
 import 'package:posts_article/constants/images.dart';
-import 'package:posts_article/utils/logs.dart';
+import 'package:posts_article/configs/logs.dart';
 
 
 class BlogNews {
