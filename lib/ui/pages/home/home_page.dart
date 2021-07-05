@@ -29,6 +29,7 @@ class Home extends StatelessWidget {
             Container(
                 height: Screen.height(context) * 0.055,
                 color: Colors.red[600],
+                alignment: Alignment.centerLeft,
                 child: ListView.builder(
                     primary: false,
                     shrinkWrap: true,
