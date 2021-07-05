@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:posts_article/models/categories_model.dart';
 import 'package:posts_article/ui/pages/home/widget/body_heading.dart';
-import 'package:posts_article/ui/pages/home/widget/categories_items.dart';
-import 'package:posts_article/ui/pages/home/widget/categories_items_data.dart';
+import 'package:posts_article/ui/pages/home/widget/categories_item.dart';
+import 'package:posts_article/ui/pages/home/widget/categorie.dart';
 import 'package:posts_article/ui/widget/app_bar.dart';
 import 'package:posts_article/utils/responsive.dart';
 
@@ -25,7 +26,17 @@ class Home extends StatelessWidget {
       child: Container(
         child: Column(
           children: <Widget>[
-            CategoriesItems(),
+            Container(
+                height: Screen.height(context) * 0.055,
+                color: Colors.red[600],
+                child: ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: CategoriesModal.items!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Categorie(item: CategoriesModal.items![index]);
+                    })),
             CategoriesBodyHeading(),
             SizedBox(height: Screen.height(context) * 0.008),
             Stack(alignment: Alignment.center, children: <Widget>[
@@ -74,7 +85,16 @@ class Home extends StatelessWidget {
               ),
             ]),
             SizedBox(height: Screen.height(context) * 0.04),
-            CategoriesItemsData(),
+            ListView.builder(
+              primary: false,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              itemCount: 20,
+              itemBuilder: (BuildContext context, int index) {
+                return CategoriesItem();
+              },
+            ),
             CategoriesBodyHeading(),
             SizedBox(height: Screen.height(context) * 0.04),
           ],

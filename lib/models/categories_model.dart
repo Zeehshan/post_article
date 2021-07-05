@@ -1,28 +1,49 @@
 import 'dart:convert';
 
 class CategoriesModal {
-  static List<CategoriesItem>? Items;
+  static List<CategoriesModalItem>? items = [
+    CategoriesModalItem(
+        id: 0,
+        description: 'haider',
+        link: 'linking in process',
+        name: 'haider'),
+    CategoriesModalItem(
+        id: 0,
+        description: 'haider',
+        link: 'linking in process',
+        name: 'haider'),
+    CategoriesModalItem(
+        id: 0,
+        description: 'haider',
+        link: 'linking in process',
+        name: 'haider'),
+    CategoriesModalItem(
+        id: 0,
+        description: 'haider',
+        link: 'linking in process',
+        name: 'haider'),
+  ];
 }
 
-class CategoriesItem {
+class CategoriesModalItem {
   int? id;
   int? count;
   String? description;
   String? link;
-  String? name;
+  String name;
   String? slug;
   String? taxonomy;
-  CategoriesItem({
+  CategoriesModalItem({
     this.id,
     this.count,
     this.description,
     this.link,
-    this.name,
+    required this.name,
     this.slug,
     this.taxonomy,
   });
 
-  CategoriesItem copyWith({
+  CategoriesModalItem copyWith({
     int? id,
     int? count,
     String? description,
@@ -31,7 +52,7 @@ class CategoriesItem {
     String? slug,
     String? taxonomy,
   }) {
-    return CategoriesItem(
+    return CategoriesModalItem(
       id: id ?? this.id,
       count: count ?? this.count,
       description: description ?? this.description,
@@ -54,8 +75,8 @@ class CategoriesItem {
     };
   }
 
-  factory CategoriesItem.fromMap(Map<String, dynamic> map) {
-    return CategoriesItem(
+  factory CategoriesModalItem.fromMap(Map<String, dynamic> map) {
+    return CategoriesModalItem(
       id: map['id'],
       count: map['count'],
       description: map['description'],
@@ -68,8 +89,8 @@ class CategoriesItem {
 
   String toJson() => json.encode(toMap());
 
-  factory CategoriesItem.fromJson(String source) =>
-      CategoriesItem.fromMap(json.decode(source));
+  factory CategoriesModalItem.fromJson(String source) =>
+      CategoriesModalItem.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -80,7 +101,7 @@ class CategoriesItem {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is CategoriesItem &&
+    return other is CategoriesModalItem &&
         other.id == id &&
         other.count == count &&
         other.description == description &&
