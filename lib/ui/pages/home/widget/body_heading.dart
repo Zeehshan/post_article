@@ -22,7 +22,7 @@ class CategoriesBodyHeading extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.symmetric(
                 horizontal: Screen.width(context) * 0.05,
-                vertical: Screen.width(context) * 0.008),
+                vertical: Screen.width(context) * 0.013),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
