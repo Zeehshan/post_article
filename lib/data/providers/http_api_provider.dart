@@ -11,7 +11,7 @@ class HttpApiProvider implements ApiProvider {
         await K3Webservice.getMethod<List<CategoriesModalItem>>(
             url: apisToUrls(ApisRoutes.CATEGORIES));
     if (apiResponse != null) {
-      return apiResponse as List<CategoriesModalItem>;
+      return apiResponse;
     } else {
       return [];
     }

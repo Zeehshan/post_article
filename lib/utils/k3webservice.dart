@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:posts_article/configs/logs.dart';
+import 'package:posts_article/models/categories_model.dart';
 
 class K3Webservice {
   static Future<T?> postMethod<T>(
@@ -31,8 +33,8 @@ class K3Webservice {
         } else {
           decode = response.body;
         }
-        if (!decode['error']) {
-          return decode;
+        if (T.toString() == 'List<CategoriesModalItem>') {
+          return fromJson(decode);
         } else {
           return null;
         }
@@ -40,6 +42,20 @@ class K3Webservice {
       return null;
     } catch (err) {
       return null;
+    }
+  }
+
+  static T? fromJson<T>(dynamic json) {
+    if(T.toString() == 'List<CategoriesModalItem>'){
+       try{
+          List<dynamic> _list = json;
+          List<CategoriesModalItem> categories = _list.map((element) => CategoriesModalItem.fromMap(element)).toList();
+          return categories as T;
+       }catch(e){
+         printLog('ERRO ::: List<CategoriesModalItem>');
+         print(e);
+         return [] as T;
+       }
     }
   }
 }

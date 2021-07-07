@@ -9,7 +9,6 @@ import 'configs/routes/app_pages.dart';
 import 'configs/themes/app_themes.dart';
 import 'data/providers/providers.dart';
 import 'data/repositories/repositories.dart';
-import 'services/sync_data_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +31,6 @@ Future<void> initServices() async {
     permanent: true,
   );
   Get.put<SyncDataRepository>(SyncDataRepository(), permanent: true);
-  Get.put<SyncDataService>(SyncDataService());
 }
 
 class CouponApp extends StatelessWidget {

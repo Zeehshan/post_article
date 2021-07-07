@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:posts_article/ui/pages/home/home_page.dart';
+import 'package:posts_article/ui/pages/pages.dart';
 
 part 'app_routes.dart';
 

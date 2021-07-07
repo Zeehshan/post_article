@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:posts_article/utils/responsive.dart';
+part of 'widgets.dart';
 
 class CategoriesBodyHeading extends StatelessWidget {
   @override

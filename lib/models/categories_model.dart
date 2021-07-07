@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'post_model.dart';
+
 class CategoriesModal {
   static List<CategoriesModalItem>? items = [
     CategoriesModalItem(
@@ -33,6 +35,7 @@ class CategoriesModalItem {
   String name;
   String? slug;
   String? taxonomy;
+  List<BlogNews>? posts;
   CategoriesModalItem({
     this.id,
     this.count,
@@ -41,6 +44,7 @@ class CategoriesModalItem {
     required this.name,
     this.slug,
     this.taxonomy,
+    this.posts
   });
 
   CategoriesModalItem copyWith({
@@ -84,6 +88,7 @@ class CategoriesModalItem {
       name: map['name'],
       slug: map['slug'],
       taxonomy: map['taxonomy'],
+      posts: [BlogNews.empty(0)]
     );
   }
 
