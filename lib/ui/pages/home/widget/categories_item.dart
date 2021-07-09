@@ -1,6 +1,10 @@
 part of 'widgets.dart';
 
 class CategoriesItem extends StatelessWidget {
+  final BlogNews news;
+
+  const CategoriesItem({Key? key, required this.news}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
