@@ -25,7 +25,7 @@ class AppEnvironment {
 
   // API / backend base urls
   static const productionApiBaseUrl = '';
-  static const developmentApiBaseUrl = 'https://bebasket.digitalwebtunisia.com/';
+  static const developmentApiBaseUrl = 'https://bb.devmode.ovh/';
 
   // API base url based on current environment
   static String get apiBaseUrl => AppEnvironment.isProductionMode

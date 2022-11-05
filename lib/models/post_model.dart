@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:posts_article/constants/images.dart';
 import 'package:posts_article/configs/logs.dart';
-
+import 'package:html/parser.dart';
 
 class BlogNews {
   int? id;
@@ -14,6 +14,7 @@ class BlogNews {
   String? excerpt;
   String? slug;
   String? imageFeature;
+  String? categoryName;
 //  int categoryId;
 
   BlogNews.empty(this.id) {
@@ -45,7 +46,8 @@ class BlogNews {
       id = parsedJson['id'];
       slug = parsedJson['slug'];
       title = HtmlUnescape().convert(parsedJson['title']['rendered']);
-      content = parsedJson['content']['rendered'];
+      content =  _parseHtmlString(parsedJson['content']['rendered']);
+      categoryName = parsedJson['_embedded']['wp:term'][0][0]['name'];
 
       var imgJson = parsedJson['better_featured_image'];
       if (imgJson != null && imgJson['media_details'] != null) {
@@ -69,7 +71,7 @@ class BlogNews {
         imageFeature = kDefaultImage;
       }
 
-//      author = parsedJson["_embedded"]["author"][0]["name"];
+     author = parsedJson["_embedded"]["author"][0]["name"];
       excerpt = HtmlUnescape().convert(parsedJson['excerpt']['rendered']);
       date = parsedJson['date'];
     } catch (e, trace) {
@@ -98,12 +100,20 @@ class BlogNews {
       slug = json['slug'];
       content = json['content'];
       imageFeature = json['imageFeature'];
+      categoryName = json['categoryName'];
       excerpt = json['excerpt'];
       date = json['date'];
     } catch (e, trace) {
       printLog(e.toString());
       printLog(trace.toString());
     }
+  }
+
+   String _parseHtmlString(String htmlString) {
+    final document = parse(htmlString);
+    final String parsedString =
+        parse(document.body!.text).documentElement!.text;
+    return parsedString;
   }
 
   @override

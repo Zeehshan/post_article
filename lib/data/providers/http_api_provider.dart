@@ -19,14 +19,26 @@ class HttpApiProvider implements ApiProvider {
   }
 
   @override
-  Future<List<BlogNews>> getPost() async {
+  Future<List<BlogNews>> getPosts({int? categoryId, int perPage = 10}) async {
     final List<BlogNews>? apiResponse =
         await K3Webservice.getMethod<List<BlogNews>>(
-            url: apisToUrls(ApisRoutes.POSTS));
+            url: apisToUrls(ApisRoutes.POSTS,perPage: perPage,categoryId: categoryId));
     if (apiResponse != null) {
       return apiResponse;
     } else {
       return [];
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>?> getPageData({required int pageId}) async {
+    final Map<String, dynamic>? apiResponse =
+        await K3Webservice.getMethod<Map<String, dynamic>>(
+            url: apisToUrls(ApisRoutes.PAGE_DATA, pageId: pageId));
+    if (apiResponse != null) {
+      return apiResponse;
+    } else {
+      return null;
     }
   }
 }

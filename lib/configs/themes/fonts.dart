@@ -5,6 +5,6 @@ TextTheme kTextTheme(TextTheme theme) {
   return GoogleFonts.poppinsTextTheme(theme);
 }
 
-TextTheme kHeadlineTheme(TextTheme theme, [String language = 'en']) {
+TextTheme kHeadlineTheme(TextTheme theme, [String language = 'fr']) {
   return GoogleFonts.poppinsTextTheme(theme);
 }

@@ -9,7 +9,12 @@ class SyncDataRepository {
     return _apiProvider.getCategories();
   }
 
-  Future<List<BlogNews>> getPost() async {
-    return _apiProvider.getPost();
+  Future<List<BlogNews>> getPosts({int? categoryId, int perPage = 10}) async {
+    return _apiProvider.getPosts(categoryId: categoryId, perPage: perPage);
+  }
+
+  Future<Map<String, dynamic>?> getPageData({required int pageId})async{
+return _apiProvider.getPageData(pageId: pageId);
   }
 }
+ 

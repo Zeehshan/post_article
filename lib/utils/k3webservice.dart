@@ -23,6 +23,7 @@ class K3Webservice {
 
   static Future<T?> getMethod<T>(
       {String? url, dynamic data, dynamic headers}) async {
+    printLog(url.toString());
     try {
       var response = await http.get(Uri.parse(url!));
       // print(response);
@@ -38,12 +39,18 @@ class K3Webservice {
           return fromJson(decode);
         } else if (T.toString() == 'List<BlogNews>') {
           return fromJson(decode);
-        } else {
+        } 
+        else if(T.toString() == 'Map<String, dynamic>'){
+          print(decode);
+           return decode;
+        }
+        else {
           return null;
         }
       }
       return null;
     } catch (err) {
+      printLog(url.toString() + ':::::::::  $err');
       return null;
     }
   }
@@ -52,7 +59,7 @@ class K3Webservice {
     if (T.toString() == 'List<CategoriesModalItem>') {
       try {
         List<dynamic> _list = json;
-        List<CategoriesModalItem> categories = _list
+        List<CategoriesModalItem> categories = _list.where((element) => element['slug'] != 'uncategorized')
             .map((element) => CategoriesModalItem.fromMap(element))
             .toList();
         return categories as T;

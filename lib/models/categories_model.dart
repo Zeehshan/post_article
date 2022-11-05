@@ -35,6 +35,7 @@ class CategoriesModalItem {
   String name;
   String? slug;
   String? taxonomy;
+  Map<String, dynamic>? pageData;
   List<BlogNews>? posts;
   CategoriesModalItem({
     this.id,
@@ -44,6 +45,7 @@ class CategoriesModalItem {
     required this.name,
     this.slug,
     this.taxonomy,
+    this.pageData,
     this.posts
   });
 
@@ -88,7 +90,6 @@ class CategoriesModalItem {
       name: map['name'],
       slug: map['slug'],
       taxonomy: map['taxonomy'],
-      posts: [BlogNews.empty(0)]
     );
   }
 

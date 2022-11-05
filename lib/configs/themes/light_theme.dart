@@ -85,6 +85,7 @@ ThemeData buildLightTheme(String language, [String fontFamily = 'Roboto']) {
   final base = ThemeData.light().copyWith();
 
   return base.copyWith(
+    secondaryHeaderColor: HexColor('00acd8'),
     brightness: Brightness.light,
     colorScheme: kColorScheme,
     buttonColor: kTeal400,
@@ -135,4 +136,4 @@ ThemeData buildLightTheme(String language, [String fontFamily = 'Roboto']) {
 }
 
 ThemeData lightTheme =
-    buildLightTheme('en').copyWith(primaryColor: HexColor('#F04141'));
+    buildLightTheme('en').copyWith(primaryColor: HexColor('#d81526'));
